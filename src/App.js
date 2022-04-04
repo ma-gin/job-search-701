@@ -1,7 +1,8 @@
 import React from "react"
+import Home from "./views/Home"
 
 const App = () => {
-  return <div>Remote Job Finder</div>
+  return <Home />
 }
 
 export default App
