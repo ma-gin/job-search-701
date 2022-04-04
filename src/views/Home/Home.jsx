@@ -3,15 +3,21 @@ import axios from "axios"
 
 const Home = () => {
   const [jobs, setJobs] = useState([])
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     fetchData()
-  }, [jobs])
+  }, [])
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(process.env.REACT_APP_JOBS_URL)
-      setJobs(response.data.data)
+      setLoading(true)
+      // const response = await axios.get(process.env.REACT_APP_JOBS_URL) //Strive API
+      const response = await axios.get(
+        "https://jsonplaceholder.typicode.com/posts"
+      )
+      setLoading(false)
+      setJobs(response.data)
     } catch (error) {
       console.log(error.message)
     }
@@ -21,19 +27,25 @@ const Home = () => {
     <>
       <div>Remote Job Finder</div>
       <input type="text" />
-      <ul>
-        {jobs.map((item) => (
-          <li key={item._id}>
-            <h5>{item.company_name}</h5>
-            <a href={item.url}>{item.title}</a>
-          </li>
-        ))}
-      </ul>
+      <Jobs jobs={jobs} loading={loading} />
     </>
   )
 }
 
 export default Home
 
-// jobs.filter(job => job.category === category).map((job) => (
-//            <SingleJob key={job._id} job={job}/>))}
+const Jobs = ({ jobs, loading }) => {
+  if (loading) {
+    return <h4>...loading</h4>
+  }
+  return (
+    <ul>
+      {jobs.map((item) => (
+        <li key={item.id}>
+          <h5>{item.title}</h5>
+          <a href={item.url}>{item.body}</a>
+        </li>
+      ))}
+    </ul>
+  )
+}
