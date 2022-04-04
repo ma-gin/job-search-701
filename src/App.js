@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Home from "./views/Home/Home"
 import Contact from "./views/Contact/Contact"
 import Company from "./views/Company/Company"
+import NotFound from "./views/NotFound/NotFound"
 import Navigation from "./components/Navigation"
 
 const App = () => {
@@ -10,9 +11,10 @@ const App = () => {
     <Router>
       <Navigation />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route index element={<Home />} />
         <Route path="contact" element={<Contact />} />
         <Route path=":company" element={<Company />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   )
