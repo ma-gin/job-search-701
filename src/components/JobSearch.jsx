@@ -19,8 +19,12 @@ const JobSearch = ({ handleSearch }) => {
       <input type="text" onChange={(e) => handleSearch(e)} />
       <select name="category" id="category">
         {categories &&
-          categories.map((item) => {
-            return <option value="item">{item}</option>
+          categories.map((item, index) => {
+            return (
+              <option key={index} value="item">
+                {item}
+              </option>
+            )
           })}
       </select>
     </div>

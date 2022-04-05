@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 import axios from "axios"
 import JobSearch from "../../components/JobSearch"
 
@@ -44,8 +45,10 @@ const Jobs = ({ jobs, loading }) => {
     <ul>
       {jobs.map((item) => (
         <li key={item._id}>
-          <h5>{item.company_name}</h5>
-          <a href={item.url}>{item.title}</a>
+          <Link to={`/company/${item._id}`}>
+            <h5>{item.company_name}</h5>
+            <div>{item.title}</div>
+          </Link>
         </li>
       ))}
     </ul>
