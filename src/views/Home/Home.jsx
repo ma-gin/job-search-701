@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
+import JobSearch from "../../components/JobSearch"
 
 const Home = () => {
   const [jobs, setJobs] = useState([])
@@ -12,21 +13,22 @@ const Home = () => {
   const fetchData = async () => {
     try {
       setLoading(true)
-      // const response = await axios.get(process.env.REACT_APP_JOBS_URL) //Strive API
-      const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/posts"
-      )
+      const response = await axios.get(`${process.env.REACT_APP_URL}/jobs`)
       setLoading(false)
-      setJobs(response.data)
+      const data = response.data.data
+      setJobs(data.slice(0, 20))
     } catch (error) {
       console.log(error.message)
     }
   }
 
+  const handleSearch = (e) => {
+    console.log(e.target.value)
+  }
   return (
     <>
       <div>Remote Job Finder</div>
-      <input type="text" />
+      <JobSearch handleSearch={handleSearch} />
       <Jobs jobs={jobs} loading={loading} />
     </>
   )
@@ -41,9 +43,9 @@ const Jobs = ({ jobs, loading }) => {
   return (
     <ul>
       {jobs.map((item) => (
-        <li key={item.id}>
-          <h5>{item.title}</h5>
-          <a href={item.url}>{item.body}</a>
+        <li key={item._id}>
+          <h5>{item.company_name}</h5>
+          <a href={item.url}>{item.title}</a>
         </li>
       ))}
     </ul>
