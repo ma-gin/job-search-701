@@ -23,12 +23,6 @@ const JobSearch = ({ search, handleSearch }) => {
     console.log(category)
   }
 
-  // const jobSearch = async () => {
-  //   const response = await axios.get(
-  //     `${process.env.REACT_APP_URL}/jobs?search=${search}&limit=25`
-  //   )
-  //   console.log(response)
-  // }
   return (
     <div className="search">
       <TextField
