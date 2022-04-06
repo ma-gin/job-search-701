@@ -1,0 +1,12 @@
+.nav-home {
+  margin-right: 2rem;
+}
+
+.select-category {
+  min-width: 150px !important;
+  margin-inline: 1rem !important;
+}
+
+.search-btn {
+  margin-top: 10px !important;
+}

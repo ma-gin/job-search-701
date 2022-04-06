@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
+import "./styles.css"
+import { Button, MenuItem, TextField } from "@material-ui/core"
 
-const JobSearch = ({ handleSearch }) => {
+const JobSearch = ({ search, handleSearch }) => {
   const [categories, setCategories] = useState([])
+  const [category, setCategory] = useState([])
 
   useEffect(() => {
     fetchData()
@@ -14,19 +17,34 @@ const JobSearch = ({ handleSearch }) => {
     )
     setCategories(response.data)
   }
+
+  const handleChange = (e) => {
+    setCategory(e.target.value)
+    console.log(category)
+  }
   return (
     <div className="search">
-      <input type="text" onChange={(e) => handleSearch(e)} />
-      <select name="category" id="category">
+      <TextField label="Search" onChange={(e) => handleSearch(e)} />
+      <TextField
+        select
+        label="Select Category"
+        value={""}
+        onChange={handleChange}
+        className="select-category">
         {categories &&
-          categories.map((item, index) => {
-            return (
-              <option key={index} value="item">
-                {item}
-              </option>
-            )
-          })}
-      </select>
+          categories
+            .map((item, index) => {
+              return (
+                <MenuItem key={index} value={item}>
+                  {item}
+                </MenuItem>
+              )
+            })
+            .reverse()}
+      </TextField>
+      <Button variant="contained" color="primary" className="search-btn">
+        Search
+      </Button>
     </div>
   )
 }
