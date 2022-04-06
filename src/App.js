@@ -1,8 +1,7 @@
 import React from "react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Home from "./views/Home/Home"
-import Contact from "./views/Contact/Contact"
-import Company from "./views/Company/Company"
+import Job from "./views/Company/Job"
 import NotFound from "./views/NotFound/NotFound"
 import Navigation from "./components/Navigation"
 
@@ -12,8 +11,7 @@ const App = () => {
       <Navigation />
       <Routes>
         <Route index element={<Home />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/company/:id" element={<Company />} />
+        <Route path="/company/:id" element={<Job />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

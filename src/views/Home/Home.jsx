@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import React, { useEffect, useState } from "react"
 import axios from "axios"
 import JobSearch from "../../components/JobSearch"
 import "./styles.css"
+import Jobs from "../../components/Jobs"
 
 const Home = () => {
   const [jobs, setJobs] = useState([])
   const [search, setSearch] = useState("")
   const [loading, setLoading] = useState(false)
-  // const [currentPage, setCurrentPage] = useState(1)
-  // const [itemsPerPage, setItemsPerPage] = useState(10)
 
   useEffect(() => {
     fetchData()
@@ -27,46 +25,18 @@ const Home = () => {
     }
   }
 
-  const handleSearch = (e) => {
-    console.log(e.target.value)
+  const handleSearch = async (e) => {
     setSearch(e.target.value)
-    console.log(search)
-    setJobs(
-      jobs.filter((item) => {
-        return item.title.includes(search) || item.company_name.includes(search)
-      })
-    )
   }
+
   return (
     <>
-      <div className="title">Remote Job Finder</div>
-      <JobSearch search={search} handleSearch={handleSearch} />
+      <header>
+        <JobSearch search={search} handleSearch={handleSearch} />
+      </header>
       <Jobs search={search} jobs={jobs} loading={loading} />
     </>
   )
 }
 
 export default Home
-
-const Jobs = ({ search, jobs, loading }) => {
-  if (search) {
-    if (loading) {
-      return <h4>...loading</h4>
-    }
-    return (
-      <ul>
-        {jobs.map((item) => {
-          return (
-            <li key={item._id}>
-              <Link to={`/company/${item._id}`}>
-                <h5>{item.company_name}</h5>
-                <div>{item.title}</div>
-              </Link>
-            </li>
-          )
-        })}
-      </ul>
-    )
-  }
-  return null
-}

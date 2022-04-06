@@ -22,9 +22,20 @@ const JobSearch = ({ search, handleSearch }) => {
     setCategory(e.target.value)
     console.log(category)
   }
+
+  // const jobSearch = async () => {
+  //   const response = await axios.get(
+  //     `${process.env.REACT_APP_URL}/jobs?search=${search}&limit=25`
+  //   )
+  //   console.log(response)
+  // }
   return (
     <div className="search">
-      <TextField label="Search" onChange={(e) => handleSearch(e)} />
+      <TextField
+        value={search}
+        label="Search"
+        onChange={(e) => handleSearch(e)}
+      />
       <TextField
         select
         label="Select Category"

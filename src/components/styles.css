@@ -10,3 +10,24 @@
 .search-btn {
   margin-top: 10px !important;
 }
+
+.page-title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 2.5rem auto;
+  text-decoration: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+.page-title:hover {
+  opacity: 0.6;
+}
+
+.page-title:active {
+  color: hsla(240, 62%, 16%, 0.8);
+}
+
+.page-title:visited {
+  color: black;
+}

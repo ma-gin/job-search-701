@@ -1,11 +1,7 @@
-import React from "react"
-import { useParams } from "react-router-dom"
-
-const Company = (props) => {
-  const { id } = useParams()
+const Company = () => {
   return (
-    <div className="company-details">
-      <h2>Company Details - {id}</h2>
+    <div>
+      <h5>"hello world</h5>
     </div>
   )
 }
