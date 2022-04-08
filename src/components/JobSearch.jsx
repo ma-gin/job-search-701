@@ -3,9 +3,15 @@ import axios from "axios"
 import "./styles.css"
 import { Button, MenuItem, TextField } from "@material-ui/core"
 
-const JobSearch = ({ search, handleSearch }) => {
+const JobSearch = ({
+  search,
+  category,
+  quick,
+  handleSearch,
+  setQuick,
+  setCategory,
+}) => {
   const [categories, setCategories] = useState([])
-  const [category, setCategory] = useState([])
 
   useEffect(() => {
     fetchData()
@@ -20,37 +26,63 @@ const JobSearch = ({ search, handleSearch }) => {
 
   const handleChange = (e) => {
     setCategory(e.target.value)
-    console.log(category)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(search)
+    handleSearch(search)
+  }
+
+  const toggle = (value) => {
+    return !value
   }
 
   return (
-    <div className="search">
-      <TextField
-        value={search}
-        label="Search"
-        onChange={(e) => handleSearch(e)}
-      />
-      <TextField
-        select
-        label="Select Category"
-        value={""}
-        onChange={handleChange}
-        className="select-category">
-        {categories &&
-          categories
-            .map((item, index) => {
-              return (
-                <MenuItem key={index} value={item}>
-                  {item}
-                </MenuItem>
-              )
-            })
-            .reverse()}
-      </TextField>
-      <Button variant="contained" color="primary" className="search-btn">
-        Search
-      </Button>
-    </div>
+    <>
+      <form onSubmit={handleSubmit}>
+        <div className="min-width">
+          <input
+            name="quick-result"
+            type="checkbox"
+            checked={quick}
+            onChange={() => setQuick(toggle)}
+          />
+          <label htmlFor="quick-result">Quick Result</label>
+        </div>
+        <div className="search">
+          <TextField
+            value={search}
+            label="Search"
+            onChange={(e) => handleSearch(e)}
+          />
+          <TextField
+            select
+            label="Select Category"
+            value={category}
+            onChange={handleChange}
+            className="select-category">
+            {categories &&
+              categories
+                .map((item, index) => {
+                  return (
+                    <MenuItem className="select-item" key={index} value={item}>
+                      {item}
+                    </MenuItem>
+                  )
+                })
+                .reverse()}
+          </TextField>
+          <Button
+            variant="contained"
+            color="primary"
+            type="submit"
+            className="search-btn">
+            Search
+          </Button>
+        </div>
+      </form>
+    </>
   )
 }
 

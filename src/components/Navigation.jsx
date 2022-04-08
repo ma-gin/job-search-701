@@ -3,9 +3,20 @@ import "./styles.css"
 
 const Navigation = () => {
   return (
-    <Link className="page-title" to="/">
-      Remote Job Search
-    </Link>
+    <nav className="navbar">
+      <Link to="/">
+        <div className="logo"></div>
+      </Link>
+      <Link to="/">
+        <div className="page-title">Remote Job Finder</div>
+      </Link>
+      <ul>
+        <li className="nav-item">
+          <Link to="/employers">Employers</Link>
+        </li>
+        <li className="nav-item">Sign Up</li>
+      </ul>
+    </nav>
   )
 }
 

@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react"
 import axios from "axios"
 import JobSearch from "../../components/JobSearch"
 import "./styles.css"
-import Jobs from "../../components/Jobs"
+import JobResults from "../../components/JobResults"
 
 const Home = () => {
   const [jobs, setJobs] = useState([])
   const [search, setSearch] = useState("")
   const [loading, setLoading] = useState(false)
+  const [category, setCategory] = useState("")
+  const [quick, setQuick] = useState(false)
 
   useEffect(() => {
     fetchData()
@@ -26,15 +28,24 @@ const Home = () => {
   }
 
   const handleSearch = async (e) => {
-    setSearch(e.target.value)
+    console.log(e)
+    e.target.value ? setSearch(e.target.value) : setSearch(e)
   }
 
   return (
     <>
       <header>
-        <JobSearch search={search} handleSearch={handleSearch} />
+        <JobSearch
+          jobs={jobs}
+          search={search}
+          category={category}
+          quick={quick}
+          setQuick={setQuick}
+          setCategory={setCategory}
+          handleSearch={handleSearch}
+        />
       </header>
-      <Jobs search={search} jobs={jobs} loading={loading} />
+      <JobResults search={search} jobs={jobs} quick={quick} loading={loading} />
     </>
   )
 }
