@@ -41,15 +41,6 @@ const JobSearch = ({
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className="min-width">
-          <input
-            name="quick-result"
-            type="checkbox"
-            checked={quick}
-            onChange={() => setQuick(toggle)}
-          />
-          <label htmlFor="quick-result">Quick Result</label>
-        </div>
         <div className="search">
           <TextField
             value={search}

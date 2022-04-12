@@ -4,8 +4,8 @@ import Home from "./views/Home/Home"
 import Job from "./views/Company/Job"
 import NotFound from "./views/NotFound/NotFound"
 import Navigation from "./components/Navigation"
-import { Container } from "@material-ui/core"
 import Footer from "./components/Footer"
+import Container from "./components/Container"
 
 const App = () => {
   return (

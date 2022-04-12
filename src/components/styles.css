@@ -1,6 +1,15 @@
 :root {
   --logo-green: #28efa8;
 }
+/* *CONTAINER******************************** */
+
+.container {
+  max-width: 1120px;
+  height: 100vh;
+  margin: 0 auto;
+  display: grid;
+  background-color: #36d49a4d;
+}
 
 /* *NAVIGATION******************************** */
 
