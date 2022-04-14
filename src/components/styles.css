@@ -1,0 +1,215 @@
+:root {
+  --logo-green: #28efa8;
+}
+/* *CONTAINER******************************** */
+
+.container {
+  max-width: 1120px;
+  height: 100vh;
+  margin: 0 auto;
+  display: grid;
+  background-color: #36d49a4d;
+}
+
+/* *NAVIGATION******************************** */
+
+.logo {
+  background-image: url("/public/logo.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100px;
+  height: 6vh;
+  background-position: center;
+}
+.navbar {
+  height: 6vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.nav-menu {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: end;
+  margin-left: auto;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: var(--logo-green) !important;
+  cursor: pointer;
+  margin-inline: 1rem;
+  text-shadow: 1px 1px 1px rgba(110, 110, 110, 0.1);
+}
+
+.nav-item:hover {
+  opacity: 0.6;
+}
+
+.menu-icon {
+  position: absolute;
+  right: 5px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: rgb(151, 151, 151);
+  width: fit-content;
+  margin-left: auto;
+}
+
+.page-title {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 10px;
+  font-size: larger;
+  text-align: center;
+}
+
+@media screen and (max-width: 960px) {
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    display: none;
+  }
+  .nav-mobile {
+    background-color: #36d49b;
+    margin-top: 6vh;
+  }
+  .nav-item {
+    margin-inline: 0;
+    color: white !important;
+    font-size: larger;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  }
+  .nav-item:hover {
+    opacity: 1;
+    background: linear-gradient(
+      90deg,
+      rgba(51, 215, 155, 0.55) 0%,
+      rgba(157, 237, 208, 1) 58%,
+      rgba(255, 255, 255, 1) 100%
+    );
+  }
+  .nav-menu li:active {
+    color: rgb(19, 80, 34);
+    opacity: 0.68;
+  }
+  .active {
+    padding-left: 0 !important;
+    width: 100%;
+    transition: all 200ms ease-in-out;
+    display: block;
+  }
+}
+
+/* *FOOTER******************************** */
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem auto 0;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  padding-bottom: 1rem;
+}
+
+.footer-links {
+  width: 50%;
+}
+.footer-infos {
+  display: flex;
+  margin-top: 1rem;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: space-around;
+}
+.footer-socials i {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 960px) {
+  .footer {
+    flex-direction: column;
+  }
+  .footer-logo {
+    justify-content: center;
+  }
+}
+
+/* *JOB SEARCH && JOB RESULTS******************************** */
+
+.job-card {
+  display: flex;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.no-link {
+  text-decoration: none;
+  color: black;
+}
+
+.select-category {
+  min-width: 200px !important;
+  margin-inline: 1rem !important;
+  padding-left: 5px;
+}
+
+.MuiInput-input {
+  padding-left: 2px !important;
+}
+
+.search-btn {
+  margin-top: 10px !important;
+  background-color: #0ca56e !important;
+}
+
+.star {
+  margin-left: auto !important;
+}
+
+.checkbox {
+  margin: 0 auto 0 -10px !important;
+  width: min-content;
+}
+
+.min-width {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  width: min-content;
+  white-space: nowrap;
+}
+.min-width input {
+  margin-right: 0.5rem;
+}
+.MuiCheckbox-colorSecondary.Mui-checked {
+  color: #3f51b5 !important;
+}
+.MuiIconButton-colorSecondary:hover {
+  background-color: transparent !important;
+}
+.MuiIconButton-root:hover {
+  background-color: transparent;
+}
+.MuiContainer-root {
+  position: relative;
+  height: 100%;
+}
